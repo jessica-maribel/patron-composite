@@ -8,21 +8,20 @@
 </head>
 <body>
   <header>
-    <h1>Sistema de Archivos (Patrón Composite)</h1>
-    <p>Archivos soportados: <strong>PDF, DOCX, XLSX</strong>. El tamaño de una carpeta es la suma recursiva de sus hijos.</p>
+    <h1 align="center">GRUPO-01</h1>
+    <h1 align="center">Sistema de Archivos uso de Patrón Composite</h1>
+    <p align="center">Archivos soportados: <strong>PDF, DOCX, XLSX</strong>. El tamaño de una carpeta es la suma recursiva de sus hijos.</p>
   </header>
 
   <main class="contenedor">
     <section class="panel-izquierdo">
       <div class="panel-crear">
         <h2>Crear elemento</h2>
-
         <label for="tipo-crear">Tipo:</label>
         <select id="tipo-crear" aria-label="Tipo elemento">
-          <option value="carpeta">Carpeta</option>
-          <option value="archivo">Archivo</option>
+         <option value="carpeta">Carpeta</option>
+         <option value="archivo">Archivo</option>
         </select>
-
         <label for="nombre-crear">Nombre:</label>
         <input id="nombre-crear" type="text" placeholder="Nombre del archivo o carpeta" />
 
@@ -32,8 +31,8 @@
             <option value="pdf">PDF</option>
             <option value="docx">DOCX</option>
             <option value="xlsx">XLSX</option>
+			<option value="jpg">JPG</option>
           </select>
-
           <label for="tamano-crear">Tamaño (KB):</label>
           <input id="tamano-crear" type="number" min="1" value="10" />
         </div>
@@ -41,12 +40,11 @@
         <label for="padre-crear">Carpeta padre:</label>
         <select id="padre-crear">
         </select>
-
         <button id="btn-crear">Crear</button>
       </div>
 
       <div class="panel-acciones">
-        <h2>Acciones</h2>
+        <h2>Acciones a realizar</h2>
         <button id="btn-expandir-todos">Expandir todos</button>
         <button id="btn-colapsar-todos">Colapsar todos</button>
         <button id="btn-limpiar">Eliminar todo</button>
@@ -56,18 +54,16 @@
     <section class="panel-derecho">
       <h2>Árbol de archivos</h2>
       <div id="arbol-contenedor" class="arbol"></div>
-
       <h3>Detalles</h3>
       <div id="detalles" class="detalles">
-        <p>Selecciona un archivo o carpeta para ver opciones (renombrar, eliminar).</p>
+         <p>Selecciona un archivo o carpeta para ver opciones (renombrar, eliminar).</p>
       </div>
     </section>
   </main>
-
+	
   <footer>
     <small>Guardado en localStorage (clave: <code>sistema_archivos</code>)</small>
   </footer>
-
   <script src="js/app.js"></script>
 </body>
 </html>
