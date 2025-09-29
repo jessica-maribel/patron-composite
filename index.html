@@ -1,16 +1,19 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sistema de Archivos - Patrón Composite</title>
   <link rel="stylesheet" href="css/estilos.css" />
 </head>
+
 <body>
   <header>
     <h1 align="center">GRUPO-01</h1>
     <h1 align="center">Sistema de Archivos uso de Patrón Composite</h1>
-    <p align="center">Archivos soportados: <strong>PDF, DOCX, XLSX, JPG</strong>. El tamaño de una carpeta es la suma recursiva de sus hijos.</p>
+    <p align="center">Archivos soportados: <strong>PDF, DOCX, XLSX, JPG</strong>. El tamaño de una carpeta es la suma
+      recursiva de sus hijos.</p>
   </header>
 
   <main class="contenedor">
@@ -19,8 +22,8 @@
         <h2>Crear elemento</h2>
         <label for="tipo-crear">Tipo:</label>
         <select id="tipo-crear" aria-label="Tipo elemento">
-         <option value="carpeta">Carpeta</option>
-         <option value="archivo">Archivo</option>
+          <option value="carpeta">Carpeta</option>
+          <option value="archivo">Archivo</option>
         </select>
         <label for="nombre-crear">Nombre:</label>
         <input id="nombre-crear" type="text" placeholder="Nombre del archivo o carpeta" />
@@ -31,7 +34,7 @@
             <option value="pdf">PDF</option>
             <option value="docx">DOCX</option>
             <option value="xlsx">XLSX</option>
-			<option value="jpg">JPG</option>
+            <option value="jpg">JPG</option>
           </select>
           <label for="tamano-crear">Tamaño (KB):</label>
           <input id="tamano-crear" type="number" min="1" value="10" />
@@ -56,15 +59,17 @@
       <div id="arbol-contenedor" class="arbol"></div>
       <h3>Detalles</h3>
       <div id="detalles" class="detalles">
-         <p>Selecciona un archivo o carpeta para ver opciones (renombrar, eliminar).</p>
+        <p>Selecciona un archivo o carpeta para ver opciones (renombrar, eliminar).</p>
       </div>
     </section>
   </main>
-	
+
   <footer>
     <small>Guardado en localStorage (clave: <code>sistema_archivos</code>)</small>
   </footer>
-  <script src="js/app.js"></script>
+  <script type="module" src="js/main.js"></script>
+
+
 </body>
 
 </html>
