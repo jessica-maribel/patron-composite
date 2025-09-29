@@ -1,8 +1,8 @@
 // ==========================
-// PATRÓN COMPOSITE
-// ==========================
+// USO DE PATRÓN COMPOSITE
 
-// Componente base
+
+// Componente base ===========
 class ComponenteArchivo {
     constructor(nombre) {
         this.nombre = nombre;
@@ -35,7 +35,7 @@ class Archivo extends ComponenteArchivo {
     }
 }
 
-// Composite: Carpeta
+// Composite: Carpeta ======
 class Carpeta extends ComponenteArchivo {
     constructor(nombre) {
         super(nombre);
@@ -56,9 +56,7 @@ class Carpeta extends ComponenteArchivo {
     }
 }
 
-// ==========================
-// LÓGICA DE LA APLICACIÓN
-// ==========================
+// LÓGICA DE LA APLICACIÓN ===========
 
 const nombreElemento = document.getElementById('nombreElemento');
 const tipoElemento = document.getElementById('tipoElemento');
@@ -72,7 +70,7 @@ const campoTamanio = document.getElementById('campoTamanio');
 
 let raiz = new Carpeta("Raíz");
 
-// Cargar datos de LocalStorage
+// Cargar datos de LocalStorage  ================
 function cargarDesdeLocal() {
     const datos = localStorage.getItem("estructuraArchivos");
     if (datos) {
@@ -81,7 +79,7 @@ function cargarDesdeLocal() {
     actualizarVista();
 }
 
-// Reconstrucción de objetos desde JSON
+// Reconstrucción de objetos desde JSON ==============
 function reconstruir(obj) {
     if (obj.tipo === "carpeta") {
         let carpeta = new Carpeta(obj.nombre);
@@ -92,12 +90,12 @@ function reconstruir(obj) {
     }
 }
 
-// Guardar en LocalStorage
+// Guardar en LocalStorage =============
 function guardarEnLocal() {
     localStorage.setItem("estructuraArchivos", JSON.stringify(serializar(raiz)));
 }
 
-// Serializar para guardar
+// Serializar para guardar  =============
 function serializar(obj) {
     if (obj instanceof Carpeta) {
         return {
@@ -114,14 +112,14 @@ function serializar(obj) {
     }
 }
 
-// Actualiza la vista HTML
+// Actualiza la vista HTML ============
 function actualizarVista() {
     vistaEstructura.innerHTML = raiz.listarHTML();
     tamanoTotal.textContent = raiz.obtenerTamanio();
     actualizarOpcionesCarpeta();
 }
 
-// Llena el select de carpetas disponibles
+// Llena el select de carpetas disponibles ==========
 function actualizarOpcionesCarpeta() {
     carpetaPadre.innerHTML = "";
     const opciones = obtenerRutasCarpetas(raiz, "Raíz");
@@ -133,7 +131,7 @@ function actualizarOpcionesCarpeta() {
     });
 }
 
-// Obtiene rutas de carpetas para el select
+// Obtiene rutas de carpetas para el select ========
 function obtenerRutasCarpetas(carpeta, rutaActual) {
     let rutas = [{ carpeta, ruta: rutaActual }];
     carpeta.elementos.forEach(el => {
@@ -144,7 +142,7 @@ function obtenerRutasCarpetas(carpeta, rutaActual) {
     return rutas;
 }
 
-// Buscar carpeta por ruta
+// Buscar carpeta por ruta =============
 function buscarCarpetaPorRuta(carpeta, ruta) {
     if (ruta === "Raíz") return carpeta;
     const partes = ruta.split("/").slice(1);
@@ -155,12 +153,12 @@ function buscarCarpetaPorRuta(carpeta, ruta) {
     return actual;
 }
 
-// Evento para ocultar/mostrar tamaño en archivos
+// Evento para ocultar/mostrar tamano en archivos ============
 tipoElemento.addEventListener('change', () => {
     campoTamanio.style.display = (tipoElemento.value === 'carpeta') ? 'none' : 'block';
 });
 
-// Agregar nuevo elemento
+// Agregar nuevo elemento  ===============
 btnAgregar.addEventListener('click', () => {
     const nombre = nombreElemento.value.trim();
     const tipo = tipoElemento.value;
@@ -186,7 +184,7 @@ btnAgregar.addEventListener('click', () => {
     tamanioElemento.value = 0;
 });
 
-// Limpiar todo
+// Limpiar todo  ===========
 btnLimpiar.addEventListener('click', () => {
     if (confirm("¿Seguro que desea eliminar toda la estructura?")) {
         raiz = new Carpeta("Raíz");
@@ -195,6 +193,6 @@ btnLimpiar.addEventListener('click', () => {
     }
 });
 
-// Inicializar
+// Inicializar ==============
 cargarDesdeLocal();
 
