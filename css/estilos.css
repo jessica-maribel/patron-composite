@@ -1,78 +1,92 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    margin: 0;
-    padding: 0;
+:root{
+  --fondo:#f7f8fb;
+  --panel:#ffffff;
+  --primario:#2b6cb0;
+  --sec:#4a5568;
+  --borde:#e2e8f0;
+  --acento:#f6ad55;
 }
 
-header {
-    background: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 1em;
+*{box-sizing:border-box;font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif}
+body{
+  margin:0;
+  background:var(--fondo);
+  color:var(--sec);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
 }
-
-main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 1em;
+header{
+  background:linear-gradient(90deg,var(--primario),#38a169);
+  color:white;padding:16px;
 }
-
-section {
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1em;
-    margin: 1em;
-    flex: 1 1 300px;
+header h1{margin:0 0 6px 0;font-size:1.3rem}
+.contenedor{
+  display:flex;
+  gap:16px;
+  padding:16px;
+  flex:1;
 }
-
-label {
-    display: block;
-    margin-bottom: 0.5em;
+.panel-izquierdo{
+  width:320px;
+  background:var(--panel);
+  border:1px solid var(--borde);
+  border-radius:8px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  height:fit-content;
 }
-
-input, select, button {
-    width: 100%;
-    padding: 0.5em;
-    margin-top: 0.3em;
-    box-sizing: border-box;
+.panel-derecho{
+  flex:1;
+  background:var(--panel);
+  border:1px solid var(--borde);
+  border-radius:8px;
+  padding:12px;
+  min-height:400px;
+  overflow:auto;
 }
-
-button {
-    background: #4CAF50;
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-top: 0.5em;
+.panel-crear label{display:block;margin-top:8px;font-weight:600}
+.panel-crear input,.panel-crear select{width:100%;padding:8px;margin-top:4px;border-radius:6px;border:1px solid var(--borde)}
+button{
+  margin-top:10px;
+  padding:8px 10px;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  background:var(--primario);
+  color:white;
+  font-weight:600;
 }
-
-button:hover {
-    background: #45a049;
+button.secondary{
+  background:#edf2f7;color:var(--sec);border:1px solid var(--borde)
 }
+.oculto{display:none}
 
-#vistaEstructura {
-    background: #f0f0f0;
-    padding: 1em;
-    border-radius: 8px;
-    min-height: 200px;
+/* árbol */
+.arbol ul{list-style:none;padding-left:20px;margin:6px 0}
+.elemento{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 8px;
+  border-radius:6px;
 }
-
-.carpeta {
-    font-weight: bold;
-    color: #2e7d32;
+.elemento:hover{background:#f1f5f9}
+.icono{
+  width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;font-size:11px;background:#edf2f7;border:1px solid var(--borde)
 }
+.nombre{font-weight:600}
+.detalle-peq{font-size:0.85rem;color:#5a6470;margin-left:auto}
 
-.archivo {
-    color: #1565c0;
-}
+/* detalles */
+.detalles{border-top:1px dashed var(--borde);padding-top:8px;margin-top:8px}
+.detalles input{padding:6px;width:100%;border-radius:6px;border:1px solid var(--borde)}
+.acciones-detalles{display:flex;gap:8px;margin-top:8px}
 
-.sub-elemento {
-    margin-left: 20px;
-}
-
-.total {
-    margin-top: 1em;
-    font-weight: bold;
+/* responsive */
+@media (max-width:900px){
+  .contenedor{flex-direction:column}
+  .panel-izquierdo{width:100%}
 }
