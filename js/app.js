@@ -3,58 +3,13 @@
 
 
 // Componente base ===========
-class ComponenteArchivo {
-    constructor(nombre) {
-        this.nombre = nombre;
-    }
-    obtenerNombre() {
-        return this.nombre;
-    }
-    obtenerTamanio() {
-        throw new Error("Método obtenerTamanio() debe ser implementado");
-    }
-    agregar() {
-        throw new Error("No se puede agregar a este elemento");
-    }
-    listarHTML() {
-        throw new Error("Método listarHTML() debe ser implementado");
-    }
-}
 
-// Hoja: Archivo
-class Archivo extends ComponenteArchivo {
-    constructor(nombre, tamanio) {
-        super(nombre);
-        this.tamanio = parseInt(tamanio);
-    }
-    obtenerTamanio() {
-        return this.tamanio;
-    }
-    listarHTML() {
-        return `<div class="archivo">📄 ${this.nombre} (${this.tamanio} KB)</div>`;
-    }
-}
+import ComponenteArchivo from "js\componentes\ComponenteArchivo.js";
+import Archivo from "js\componentes\Archivo.js";
+import Carpeta from "js\componentes\Carpeta.js";
 
-// Composite: Carpeta ======
-class Carpeta extends ComponenteArchivo {
-    constructor(nombre) {
-        super(nombre);
-        this.elementos = [];
-    }
-    agregar(elemento) {
-        this.elementos.push(elemento);
-    }
-    obtenerTamanio() {
-        return this.elementos.reduce((total, elem) => total + elem.obtenerTamanio(), 0);
-    }
-    listarHTML() {
-        let html = `<div class="carpeta">📁 ${this.nombre} (${this.obtenerTamanio()} KB)</div>`;
-        html += `<div class="sub-elemento">`;
-        this.elementos.forEach(e => html += e.listarHTML());
-        html += `</div>`;
-        return html;
-    }
-}
+export { ComponenteArchivo, Archivo, Carpeta };
+
 
 // LÓGICA DE LA APLICACIÓN ===========
 
